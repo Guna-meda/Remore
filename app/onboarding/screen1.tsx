@@ -1,29 +1,42 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useRouter } from "expo-router";
+import { Link } from "expo-router";
 
 export default function Screen1() {
-  const router = useRouter();
-
   return (
-    <View className="flex-1 items-center justify-center bg-[#E6E6FA] px-6">
+    <View className="flex-1 bg-white items-center justify-center px-8">
+      {/* Skip */}
+      <TouchableOpacity className="absolute top-12 right-6">
+        <Link href="/home" asChild>
+          <Text className="text-teal-600 font-semibold">Skip</Text>
+        </Link>
+      </TouchableOpacity>
+
+      {/* Image */}
       <Image
         source={require("../../assets/onboard1.png")}
-        className="w-72 h-72 mb-6"
+        className="w-60 h-60 mb-10"
         resizeMode="contain"
       />
-      <Text className="text-3xl font-bold text-gray-800 mb-2">
-        Forward. Relax. Done.
-      </Text>
-      <Text className="text-gray-600 text-center mb-8">
-        Just forward a chat message — we’ll turn it into a todo automatically.
+
+      {/* Text */}
+      <Text className="text-3xl font-bold text-gray-800 mb-3">Reflect</Text>
+      <Text className="text-center text-gray-500 leading-6 mb-10">
+        Track your daily habits, note what went well, and reflect on how you can improve tomorrow.
       </Text>
 
-      <TouchableOpacity
-        className="bg-[#9b5de5] px-8 py-3 rounded-2xl"
-        onPress={() => router.push("/onboarding/screen2" as any)}
-      >
-        <Text className="text-white text-lg font-semibold">Next</Text>
-      </TouchableOpacity>
+      {/* Button */}
+      <Link href="/onboarding/screen2" asChild>
+        <TouchableOpacity className="w-full py-3.5 rounded-xl bg-teal-600">
+          <Text className="text-white text-center text-base font-semibold">Next</Text>
+        </TouchableOpacity>
+      </Link>
+
+      {/* Dots */}
+      <View className="flex-row justify-center mt-8 space-x-2">
+        <View className="w-2.5 h-2.5 rounded-full bg-gray-800" />
+        <View className="w-2.5 h-2.5 rounded-full bg-gray-300" />
+        <View className="w-2.5 h-2.5 rounded-full bg-gray-300" />
+      </View>
     </View>
   );
 }

@@ -1,29 +1,37 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { useRouter } from "expo-router";
+import { Link } from "expo-router";
 
 export default function Screen2() {
-  const router = useRouter();
-
   return (
-    <View className="flex-1 items-center justify-center bg-[#D6E9FF] px-6">
+    <View className="flex-1 bg-white items-center justify-center px-6">
+      <TouchableOpacity className="absolute top-12 right-6">
+        <Link href="/home" asChild>
+          <Text className="text-sky-500 font-medium">Skip</Text>
+        </Link>
+      </TouchableOpacity>
+
       <Image
         source={require("../../assets/onboard2.png")}
-        className="w-72 h-72 mb-6"
+        className="w-64 h-64 mb-8"
         resizeMode="contain"
       />
-      <Text className="text-3xl font-bold text-gray-800 mb-2">
-        Smart Organization
-      </Text>
-      <Text className="text-gray-600 text-center mb-8">
-        Your reminders, events, and todos — all synced and neatly organized.
+
+      <Text className="text-2xl font-semibold text-gray-800 mb-2">Organize</Text>
+      <Text className="text-gray-500 text-center mb-8">
+        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
       </Text>
 
-      <TouchableOpacity
-        className="bg-[#4A90E2] px-8 py-3 rounded-2xl"
-        onPress={() => router.push("/onboarding/screen3" as any)}
-      >
-        <Text className="text-white text-lg font-semibold">Next</Text>
-      </TouchableOpacity>
+      <Link href="/onboarding/screen3" asChild>
+        <TouchableOpacity className="w-full py-3 rounded-xl bg-blue-500">
+          <Text className="text-white text-center font-semibold">Next</Text>
+        </TouchableOpacity>
+      </Link>
+
+      <View className="flex-row justify-center mt-6 space-x-2">
+        <View className="w-2.5 h-2.5 rounded-full bg-gray-300" />
+        <View className="w-2.5 h-2.5 rounded-full bg-gray-800" />
+        <View className="w-2.5 h-2.5 rounded-full bg-gray-300" />
+      </View>
     </View>
   );
 }
