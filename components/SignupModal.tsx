@@ -10,42 +10,56 @@ interface SignupModalProps {
   onClose: () => void;
 }
 
-export const SignupModal: React.FC<SignupModalProps> = ({ isOpen, onClose }) => {
+export const SignupModal: React.FC<SignupModalProps> = ({
+  isOpen,
+  onClose,
+}) => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [country, setCountry] = useState<any>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
 
   const countryOptions = useMemo(() => countryList().getData(), []);
 
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-  const handleSendOtp = async () => {
-    try {
-      setLoading(true);
-      setError(null);
+  const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER;
 
-      const res = await fetch(`${API_BASE_URL}/api/auth/send-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phoneNumber })
-      });
+ const handleSendOtp = async () => {
+  try {
+    setLoading(true);
+    setError(null);
 
-      const data = await res.json();
+    const res = await fetch(`${API_BASE_URL}/api/auth/send-otp`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ phoneNumber }),
+    });
 
-      if (!res.ok) {
-        throw new Error(data.message || "Failed to send OTP");
-      }
-
-      setStep(2);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    // ✅ HANDLE ALREADY REGISTERED FIRST
+    if (res.status === 409) {
+      setAlreadyRegistered(true);
+      setStep(3);
+      return;
     }
-  };
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to send OTP");
+    }
+
+    setStep(2);
+  } catch (err: any) {
+    setError(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const handleVerifyOtp = async () => {
     try {
@@ -58,8 +72,8 @@ export const SignupModal: React.FC<SignupModalProps> = ({ isOpen, onClose }) => 
         body: JSON.stringify({
           phoneNumber,
           otp,
-          country: country.value // ISO code like "IN"
-        })
+          country: country.value, // ISO code like "IN"
+        }),
       });
 
       const data = await res.json();
@@ -211,18 +225,38 @@ export const SignupModal: React.FC<SignupModalProps> = ({ isOpen, onClose }) => 
               </div>
 
               <h2 className="text-2xl font-bold text-slate-900 mb-2">
-                You're all set!
+                {alreadyRegistered
+                  ? "You're already registered"
+                  : "You're all set!"}
               </h2>
-              <p className="text-slate-500 mb-8">
-                Start chatting with our bot on WhatsApp.
+
+              <p className="text-slate-500 mb-6">
+                {alreadyRegistered
+                  ? "Continue messaging Remore on WhatsApp with the same number."
+                  : "Start chatting with our bot on WhatsApp."}
               </p>
 
-              <Button
-                className="w-full bg-[#25D366] hover:bg-[#128C7E]"
-                onClick={handleFinish}
+              {/* WhatsApp CTA */}
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hi`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Open WhatsApp
-              </Button>
+                <Button className="w-full bg-[#25D366] hover:bg-[#128C7E] mb-4">
+                  Open WhatsApp
+                </Button>
+              </a>
+
+              {/* QR Code */}
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/${WHATSAPP_NUMBER}`}
+                alt="WhatsApp QR Code"
+                className="mx-auto"
+              />
+
+              <p className="mt-3 text-xs text-slate-400">
+                Scan the QR code to start chatting with Remore
+              </p>
             </motion.div>
           )}
         </motion.div>
