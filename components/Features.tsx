@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Brain, Sun, RefreshCcw, ArrowRight, User, Calendar, Mic, Image as ImageIcon } from 'lucide-react';
+import { MessageSquare, Brain, Sun, RefreshCcw, ArrowRight, User, Calendar, Mic, Image as ImageIcon, ShoppingBag, Camera, CheckSquare } from 'lucide-react';
 import { FadeIn } from './ui/FadeIn';
 
 const features = [
@@ -251,45 +251,76 @@ const features = [
       </div>
     )
   },
-  {
-    id: "images",
-    icon: <ImageIcon className="text-white" size={24} />,
-    title: "Visual Task Management",
-    desc: "Enhance your tasks with image support. Upload photos, sketches, or references to keep visual context right where you need it.",
-    color: "bg-cyan-500",
-    visual: (
-      <div className="flex flex-col justify-center h-full p-8 bg-gradient-to-br from-slate-50/50 to-cyan-50/20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(6,182,212,0.1),transparent)]" />
-        <div className="space-y-6">
-            <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="bg-white p-5 rounded-2xl rounded-tl-sm shadow-md border border-slate-100/50 backdrop-blur-sm max-w-[85%]"
-            >
-                <p className="text-slate-800 text-sm font-medium mb-2">Add this design sketch to the project task.</p>
-                <div className="w-full h-24 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 text-xs">
-                  [Uploaded Image Preview]
-                </div>
-                <span className="text-[10px] text-slate-400 mt-2 block">11:15 AM</span>
-            </motion.div>
-           
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                className="bg-[#DBFFFB] p-5 rounded-2xl rounded-tr-sm shadow-md border border-cyan-100/50 backdrop-blur-sm self-end ml-auto max-w-[85%]"
-            >
-                <p className="text-slate-900 text-sm mb-2">Image attached to 'UI Redesign' task. 📸</p>
-                <div className="w-full h-24 bg-cyan-100 rounded-xl flex items-center justify-center text-cyan-600 text-xs">
-                  [Image Thumbnail]
-                </div>
-                <span className="text-[10px] text-cyan-700/60 mt-2 block text-right">11:15 AM</span>
-            </motion.div>
+{
+  id: "images",
+  icon: <ImageIcon className="text-white" size={24} />,
+  title: "Photo → Instant Tasks",
+  desc: "Snap a photo of a handwritten list, receipt or note. Remore reads it and instantly turns it into real tasks or shopping items — no typing required.",
+  color: "bg-cyan-600",
+  visual: (
+    <div className="h-full bg-white p-6 flex flex-col">
+      {/* Photo Upload Section */}
+      <div className="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden mb-6">
+        <div className="px-5 py-3 border-b border-slate-200 bg-white flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-cyan-100 flex items-center justify-center text-cyan-600">
+            <ImageIcon size={16} />
+          </div>
+          <span className="font-medium text-slate-800 text-sm">Uploaded Photo</span>
+        </div>
+
+        <div className="p-5 bg-slate-50 aspect-[4/3] relative">
+          {/* Placeholder for real photo */}
+          <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-xs font-medium">
+            Handwritten shopping list / receipt
+          </div>
+
+          {/* Simple, clean detected highlights (minimal style) */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[
+              { top: "22%", label: "Milk" },
+              { top: "36%", label: "Eggs x12" },
+              { top: "50%", label: "Avocados" },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="absolute left-6 right-6 h-9 bg-cyan-500/10 border border-cyan-400/40 rounded-md flex items-center px-3"
+                style={{ top: item.top }}
+              >
+                <span className="text-xs font-medium text-cyan-700">{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    )
-  }
+
+      {/* Resulting Tasks - Very clean & simple */}
+      <div className="flex-1">
+        <h4 className="text-sm font-semibold text-slate-700 mb-4 flex items-center gap-2">
+          <CheckSquare size={16} className="text-cyan-600" />
+          Tasks Created
+        </h4>
+
+        <div className="space-y-2.5">
+          {["Buy milk", "Buy eggs (12 pack)", "Get avocados"].map((task, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-3 bg-slate-50 px-4 py-3 rounded-xl border border-slate-100"
+>
+              <div className="w-5 h-5 rounded-md border-2 border-cyan-400 flex items-center justify-center">
+                <div className="w-2.5 h-2.5 bg-cyan-500 rounded-sm" />
+              </div>
+              <span className="text-sm text-slate-800 font-medium">{task}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-xs text-slate-500 mt-4">
+          4 items added to "Groceries" • Ready to shop
+        </p>
+      </div>
+    </div>
+  ),
+},
 ];
 
 export const Features: React.FC = () => {
