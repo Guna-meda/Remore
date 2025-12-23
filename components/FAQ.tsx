@@ -7,7 +7,7 @@ import { FAQItem } from '../types';
 const faqData: FAQItem[] = [
   {
     question: "Do I need to install an app?",
-    answer: "No! WaBot lives entirely inside WhatsApp. You just chat with our number like you would with a friend."
+    answer: "No! Remore lives entirely inside WhatsApp. You just chat with our number like you would with a friend."
   },
   {
     question: "Is my data private?",

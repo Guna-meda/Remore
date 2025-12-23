@@ -64,13 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
                  <Doodle type="arrow-curved" className="w-full h-full text-slate-300 rotate-[130deg]" delay={0.8} />
               </div>
 
-              <div className="relative w-full sm:w-auto">
-                <input 
-                  type="text" 
-                  placeholder="Enter your phone number" 
-                  className="w-full sm:w-72 pl-5 pr-4 py-4 rounded-full border border-slate-200 bg-white focus:ring-4 focus:ring-blue-100 focus:border-primary outline-none transition-all shadow-lg shadow-slate-100"
-                />
-              </div>
+             
               <Button size="lg" className="w-full sm:w-auto flex items-center justify-center space-x-2 shadow-xl shadow-blue-500/20" onClick={onOpenSignup}>
                 <span>Start Free Trial</span>
                 <ArrowRight size={18} />
@@ -78,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
             </div>
             <div className="flex items-center space-x-2 text-sm text-slate-500 font-medium">
               <ShieldCheck size={16} className="text-green-500" />
-              <span>No credit card required • 14-day free trial</span>
+              <span>No credit card required • 3 months free trial</span>
             </div>
           </FadeIn>
         </div>
