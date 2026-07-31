@@ -19,8 +19,9 @@ export const SignupModal: React.FC<SignupModalProps> = ({
    * step 1 → enter phone
    * step 2 → waiting for WhatsApp YES
    * step 3 → success
+   * step 4 → already registered (409 from checkUserExists)
    */
-  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
 
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>();
   const [loading, setLoading] = useState(false);
@@ -63,6 +64,12 @@ export const SignupModal: React.FC<SignupModalProps> = ({
       });
 
       const data = await res.json();
+
+      if (res.status === 409 && data.exists) {
+        setStep(4);
+        return;
+      }
+
       if (!res.ok) {
         throw new Error(data.message || "Failed to send WhatsApp message");
       }
@@ -82,6 +89,10 @@ export const SignupModal: React.FC<SignupModalProps> = ({
     setError(null);
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (!isOpen) setStep(1);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -247,6 +258,38 @@ export const SignupModal: React.FC<SignupModalProps> = ({
               </a>
             </motion.div>
           )}
+  /* -------------------------------------------------- */
+  /* STEP 4 — ALREADY REGISTERED */
+  /* -------------------------------------------------- */
+  {step === 4 && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="text-center"
+    >
+      <div className="w-16 h-16 bg-blue-50 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+        <Smartphone size={28} />
+      </div>
+
+      <h2 className="text-2xl font-bold mb-2">
+        You're already on Remore!
+      </h2>
+
+      <p className="text-slate-500 mb-6">
+        This number is already registered — just head to WhatsApp to keep chatting.
+      </p>
+
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button className="w-full bg-[#25D366] hover:bg-[#128C7E]">
+          Open WhatsApp
+        </Button>
+      </a>
+    </motion.div>
+  )}
         </motion.div>
       </div>
     </AnimatePresence>
