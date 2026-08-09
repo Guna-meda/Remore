@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { Menu, X, MessageCircle } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from './ui/Button';
+import { Logo } from './ui/Mascot';
 
 interface NavbarProps {
   onOpenSignup: () => void;
@@ -23,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSignup }) => {
 
   const navLinks = [
     { name: 'Product', href: '#features' },
-    { name: 'How it Works', href: '#how-it-works' },
+    { name: 'Why Remore', href: '#compare' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'FAQ', href: '#faq' },
   ];
@@ -39,13 +40,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSignup }) => {
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className="fixed top-6 inset-x-0 max-w-5xl mx-auto z-50 px-6 hidden md:block"
       >
-        <div className="bg-white/80 backdrop-blur-xl border border-white/20 shadow-xl shadow-black/5 rounded-full px-6 py-3 flex items-center justify-between">
+        <div className="bg-cream-50/85 backdrop-blur-xl border border-ink/5 shadow-xl shadow-ink/5 rounded-full px-6 py-3 flex items-center justify-between">
             {/* Logo */}
             <a href="#" className="flex items-center space-x-2 group">
-              <div className="w-8 h-8 bg-slate-900 rounded-full flex items-center justify-center text-white group-hover:scale-105 transition-transform duration-300">
-                <MessageCircle size={16} fill="currentColor" className="text-white" />
-              </div>
-              <span className="text-lg font-bold tracking-tight text-slate-900">Remore</span>
+              <Logo className="w-9 h-9 group-hover:scale-105 transition-transform duration-300" />
+              <span className="text-lg font-display font-semibold tracking-tight text-ink">Remore</span>
             </a>
 
             {/* Desktop Links */}
@@ -54,7 +53,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSignup }) => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-slate-500 hover:text-slate-900 font-medium transition-colors text-sm"
+                  className="text-ink/60 hover:text-ink font-medium transition-colors text-sm"
                 >
                   {link.name}
                 </a>
@@ -71,14 +70,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSignup }) => {
       </motion.nav>
 
       {/* Mobile Navbar (Simple Top Bar) */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 p-4 flex justify-between items-center">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-cream-50/90 backdrop-blur-md border-b border-ink/5 p-4 flex justify-between items-center">
          <a href="#" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-slate-900 rounded-full flex items-center justify-center text-white">
-              <MessageCircle size={16} fill="currentColor" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-slate-900">Remore</span>
+            <Logo className="w-8 h-8" />
+            <span className="text-lg font-display font-semibold tracking-tight text-ink">Remore</span>
          </a>
-         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-slate-900">
+         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-ink">
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
          </button>
       </div>
@@ -89,7 +86,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSignup }) => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: '100vh' }}
           exit={{ opacity: 0, height: 0 }}
-          className="fixed inset-0 z-40 bg-white pt-24 px-6 md:hidden"
+          className="fixed inset-0 z-40 bg-cream-50 pt-24 px-6 md:hidden"
         >
           <div className="flex flex-col space-y-6">
             {navLinks.map((link) => (
@@ -97,12 +94,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSignup }) => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-slate-900 font-medium text-2xl"
+                className="text-ink font-medium text-2xl font-display"
               >
                 {link.name}
               </a>
             ))}
-            <hr className="border-slate-100" />
+            <hr className="border-ink/10" />
             <Button className="w-full py-4 text-lg" onClick={() => {
               setMobileMenuOpen(false);
               onOpenSignup();

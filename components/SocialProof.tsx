@@ -29,8 +29,8 @@ const Column = ({
     return (
         <div className={`relative h-[400px] md:h-[600px] overflow-hidden mask-gradient-y pointer-events-none ${className}`}>
              {/* Gradient Masks */}
-            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-50 to-transparent z-10"></div>
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-50 to-transparent z-10"></div>
+            <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-cream-50 to-transparent z-10"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream-50 to-transparent z-10"></div>
 
             <motion.div 
                 animate={{ y: direction === "up" ? [0, -1000] : [-1000, 0] }}
@@ -38,20 +38,20 @@ const Column = ({
                 className="flex flex-col gap-6"
             >
                 {[...testimonialGroup, ...testimonialGroup, ...testimonialGroup].map((t, i) => (
-                    <div key={i} className="bg-white p-6 rounded-2xl rounded-tr-sm shadow-sm border border-slate-100 max-w-sm mx-auto w-full">
+                    <div key={i} className="bg-cream-50 p-6 rounded-2xl rounded-tr-sm shadow-sm border border-ink/5 max-w-sm mx-auto w-full">
                         <div className="flex items-center gap-1 mb-2">
                              {[1, 2, 3, 4, 5].map((s) => (
                                  <Star key={s} size={12} className="fill-yellow-400 text-yellow-400" />
                              ))}
                         </div>
-                        <p className="text-slate-800 text-sm font-medium leading-relaxed mb-4">"{t.text}"</p>
+                        <p className="text-ink/80 text-sm font-medium leading-relaxed mb-4">"{t.text}"</p>
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center text-xs font-bold text-blue-600">
+                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center text-xs font-bold text-primary">
                                 {t.name.charAt(0)}
                             </div>
                             <div>
-                                <p className="text-xs font-bold text-slate-900">{t.name}</p>
-                                <p className="text-[10px] text-slate-400">{t.role}</p>
+                                <p className="text-xs font-bold text-ink">{t.name}</p>
+                                <p className="text-[10px] text-ink/40">{t.role}</p>
                             </div>
                         </div>
                     </div>
@@ -63,22 +63,22 @@ const Column = ({
 
 export const SocialProof: React.FC = () => {
   return (
-    <section className="py-24 bg-slate-50 overflow-hidden">
+    <section className="py-16 md:py-24 bg-cream-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 max-w-3xl mx-auto">
             <FadeIn>
-                <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-100 px-3 py-1 rounded-full mb-6">
+                <div className="inline-flex items-center gap-2 bg-sun/15 border border-sun/30 px-3 py-1 rounded-full mb-6">
                     <div className="flex -space-x-2">
                         {[1,2,3].map(i => (
-                            <div key={i} className="w-6 h-6 rounded-full bg-slate-200 border-2 border-white" />
+                            <div key={i} className="w-6 h-6 rounded-full bg-primary/20 border-2 border-cream-50" />
                         ))}
                     </div>
-                    <span className="text-xs font-bold text-yellow-700">Loved by 2,000+ early adopters</span>
+                    <span className="text-xs font-bold text-secondaryHover">Loved by 2,000+ early adopters</span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-                    People are trading their <br/> complex apps for <span className="text-primary">a simple chat.</span>
+                <h2 className="font-display text-4xl md:text-5xl font-semibold text-ink mb-6 tracking-tight">
+                    People are trading their <br/> complex apps for <span className="italic text-primary">a simple chat.</span>
                 </h2>
-                <p className="text-lg text-slate-600">
+                <p className="text-lg text-ink/60">
                     See what the community is saying about switching to Remore.
                 </p>
             </FadeIn>

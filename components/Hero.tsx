@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Check, Calendar, ArrowRight, ShieldCheck, MessageCircle, Signal, Wifi, Battery } from 'lucide-react';
+import { Check, Calendar, ArrowRight, ShieldCheck, Signal, Wifi, Battery } from 'lucide-react';
 import { Button } from './ui/Button';
 import { FadeIn } from './ui/FadeIn';
 import { Doodle } from './ui/Doodle';
+import { Mascot, Logo } from './ui/Mascot';
 
 interface HeroProps {
   onOpenSignup: () => void;
@@ -19,39 +20,39 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   return (
-    <section ref={targetRef} className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-[#F8FAFC] min-h-[90vh] flex items-center">
-      {/* Background decoration - More subtle */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] bg-indigo-50 rounded-full blur-3xl opacity-60 pointer-events-none" />
+    <section ref={targetRef} className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-cream-100 min-h-[90vh] flex items-center">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[800px] h-[800px] bg-primary/10 rounded-full blur-3xl opacity-70 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-3xl opacity-70 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10 w-full">
         
         {/* Text Content */}
         <div className="max-w-2xl relative order-1 lg:order-1">
           {/* Top Doodle */}
-          <div className="absolute -top-12 -left-8 hidden md:block">
-             <Doodle type="star" className="w-12 h-12 text-yellow-400" delay={0.2} />
+          <div className="absolute -top-14 -left-10 hidden md:block">
+             <Mascot color="sun" pose="wave" prop="sparkle" className="w-16 h-16" rotate={-4} float />
           </div>
           
           <FadeIn>
-            <div className="inline-flex items-center space-x-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 mb-8 shadow-sm">
-              <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-              <span className="text-sm font-semibold text-slate-600">Remore is live on WhatsApp</span>
+            <div className="inline-flex items-center space-x-2 bg-cream-50 border border-ink/10 rounded-full px-4 py-1.5 mb-8 shadow-sm">
+              <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+              <span className="text-sm font-semibold text-ink/70">Remore is live on WhatsApp</span>
             </div>
           </FadeIn>
           
           <FadeIn delay={0.1}>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight mb-6 text-slate-900">
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 text-ink">
               Your Second Brain, <br />
-              <span className="relative inline-block text-primary">
-                Inside WhatsApp.
-                <Doodle type="underline" className="absolute -bottom-2 left-0 w-full h-4 text-primary opacity-30" delay={0.5} />
+              <span className="relative inline-block italic text-primary">
+                Living in WhatsApp.
+                <Doodle type="underline" className="absolute -bottom-2 left-0 w-full h-4 text-secondary opacity-60" delay={0.5} />
               </span>
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-slate-500 mb-8 leading-relaxed max-w-lg font-medium">
+            <p className="text-lg md:text-xl text-ink/60 mb-8 leading-relaxed max-w-lg font-medium">
               Offload your mental clutter. Daily agendas, smart follow-ups, and important notes managed through a simple chat.
             </p>
           </FadeIn>
@@ -61,18 +62,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
               
               {/* Arrow pointing at input */}
               <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-24 h-24 hidden lg:block pointer-events-none">
-                 <Doodle type="arrow-curved" className="w-full h-full text-slate-300 rotate-[130deg]" delay={0.8} />
+                 <Doodle type="arrow-curved" className="w-full h-full text-ink/20 rotate-[130deg]" delay={0.8} />
               </div>
 
              
-              <Button size="lg" className="w-full sm:w-auto flex items-center justify-center space-x-2 shadow-xl shadow-blue-500/20" onClick={onOpenSignup}>
+              <Button size="lg" className="w-full sm:w-auto flex items-center justify-center space-x-2" onClick={onOpenSignup}>
                 <span>Start Free Trial</span>
                 <ArrowRight size={18} />
               </Button>
             </div>
-            <div className="flex items-center space-x-2 text-sm text-slate-500 font-medium">
-              <ShieldCheck size={16} className="text-green-500" />
-              <span>No credit card required • 3 months free trial</span>
+            <div className="flex items-center space-x-2 text-sm text-ink/50 font-medium">
+              <ShieldCheck size={16} className="text-primary" />
+              <span>No credit card required • 7 days free trial</span>
             </div>
           </FadeIn>
         </div>
@@ -86,19 +87,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
           <motion.div 
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative mx-auto w-[290px] h-[580px] md:w-[350px] md:h-[700px] bg-slate-950 rounded-[3rem] md:rounded-[3.5rem] shadow-[0_0_0_8px_#1e293b,0_0_0_10px_#475569,0_30px_60px_-10px_rgba(0,0,0,0.6)] md:shadow-[0_0_0_10px_#1e293b,0_0_0_12px_#475569,0_30px_60px_-10px_rgba(0,0,0,0.6)] z-20"
+            className="relative mx-auto w-[290px] h-[580px] md:w-[350px] md:h-[700px] bg-forest-900 rounded-[3rem] md:rounded-[3.5rem] shadow-[0_0_0_8px_#1F3B2C,0_0_0_10px_#3B7A57,0_30px_60px_-10px_rgba(31,59,44,0.5)] md:shadow-[0_0_0_10px_#1F3B2C,0_0_0_12px_#3B7A57,0_30px_60px_-10px_rgba(31,59,44,0.5)] z-20"
           >
              {/* Side Buttons (Physical) */}
-             <div className="absolute top-28 -left-[10px] md:-left-[14px] h-8 w-1 bg-slate-700 rounded-l-md shadow-sm"></div> {/* Mute */}
-             <div className="absolute top-44 -left-[10px] md:-left-[14px] h-14 w-1 bg-slate-700 rounded-l-md shadow-sm"></div> {/* Vol Up */}
-             <div className="absolute top-64 -left-[10px] md:-left-[14px] h-14 w-1 bg-slate-700 rounded-l-md shadow-sm"></div> {/* Vol Down */}
-             <div className="absolute top-48 -right-[10px] md:-right-[14px] h-20 w-1 bg-slate-700 rounded-r-md shadow-sm"></div> {/* Power */}
+             <div className="absolute top-28 -left-[10px] md:-left-[14px] h-8 w-1 bg-forest-800 rounded-l-md shadow-sm"></div>
+             <div className="absolute top-44 -left-[10px] md:-left-[14px] h-14 w-1 bg-forest-800 rounded-l-md shadow-sm"></div>
+             <div className="absolute top-64 -left-[10px] md:-left-[14px] h-14 w-1 bg-forest-800 rounded-l-md shadow-sm"></div>
+             <div className="absolute top-48 -right-[10px] md:-right-[14px] h-20 w-1 bg-forest-800 rounded-r-md shadow-sm"></div>
 
             {/* Screen Container */}
-            <div className="w-full h-full bg-white rounded-[2.5rem] md:rounded-[3rem] overflow-hidden relative flex flex-col z-10 border-[6px] border-slate-950">
+            <div className="w-full h-full bg-white rounded-[2.5rem] md:rounded-[3rem] overflow-hidden relative flex flex-col z-10 border-[6px] border-forest-900">
               
               {/* Top Status Bar Area (Inside Screen) */}
-              <div className="h-12 w-full flex justify-between items-start pt-4 px-7 text-slate-900 z-30 absolute top-0 left-0 right-0 bg-transparent">
+              <div className="h-12 w-full flex justify-between items-start pt-4 px-7 text-ink z-30 absolute top-0 left-0 right-0 bg-transparent">
                   <span className="text-[13px] font-bold tracking-wide">9:41</span>
                   <div className="flex items-center gap-1.5">
                       <Signal size={14} fill="currentColor" />
@@ -118,8 +119,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
               {/* WhatsApp Header */}
               <div className="bg-[#F0F2F5]/95 backdrop-blur-md h-24 w-full flex items-end pb-3 px-4 border-b border-slate-200 z-20 pt-10">
                 <div className="flex items-center space-x-3 w-full">
-                  <div className="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white shadow-sm ring-2 ring-white">
-                    <MessageCircle size={20} />
+                  <div className="w-11 h-11 flex items-center justify-center flex-shrink-0">
+                    <Logo className="w-11 h-11" animated={false} />
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-slate-900 text-base leading-tight">Remore</div>
@@ -181,7 +182,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
                   className="self-start bg-white p-2 rounded-xl rounded-tl-none shadow-[0_1px_2px_rgba(0,0,0,0.1)] max-w-[95%] relative"
                 >
                   <div className="flex items-center space-x-3 mb-2 bg-slate-50 p-2 rounded-lg border border-slate-100">
-                    <div className="w-9 h-9 bg-red-50 rounded-lg flex flex-col items-center justify-center text-red-500 font-bold flex-shrink-0 border border-red-100">
+                    <div className="w-9 h-9 bg-secondary/10 rounded-lg flex flex-col items-center justify-center text-secondary font-bold flex-shrink-0 border border-secondary/20">
                         <span className="text-[8px] uppercase tracking-wider">MAR</span>
                         <span className="text-base leading-none">12</span>
                     </div>
@@ -216,34 +217,38 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSignup }) => {
 
           </motion.div>
 
-          {/* Floating Elements - Z-Index Fix - Hidden on Mobile to prevent clutter */}
+          {/* Floating Elements */}
           <motion.div 
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-48 -left-12 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl shadow-slate-200/50 border border-white hidden md:flex items-center gap-4 max-w-[240px] z-30"
+            className="absolute top-48 -left-14 bg-cream-50/95 backdrop-blur-md p-4 rounded-2xl shadow-xl shadow-ink/10 border border-white hidden md:flex items-center gap-4 max-w-[240px] z-30"
           >
-            <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
               <Check size={24} />
             </div>
             <div>
-              <p className="text-sm font-bold text-slate-900">Task Complete</p>
-              <p className="text-xs text-slate-500">Groceries added to list</p>
+              <p className="text-sm font-bold text-ink">Task Complete</p>
+              <p className="text-xs text-ink/50">Groceries added to list</p>
             </div>
           </motion.div>
 
           <motion.div 
             animate={{ y: [0, 20, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-32 -right-8 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl shadow-slate-200/50 border border-white hidden md:flex items-center gap-4 max-w-[240px] z-30"
+            className="absolute bottom-32 -right-10 bg-cream-50/95 backdrop-blur-md p-4 rounded-2xl shadow-xl shadow-ink/10 border border-white hidden md:flex items-center gap-4 max-w-[240px] z-30"
           >
-            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-primary">
+            <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
               <Calendar size={24} />
             </div>
             <div>
-              <p className="text-sm font-bold text-slate-900">Upcoming Event</p>
-              <p className="text-xs text-slate-500">Design Review in 10m</p>
+              <p className="text-sm font-bold text-ink">Upcoming Event</p>
+              <p className="text-xs text-ink/50">Design Review in 10m</p>
             </div>
           </motion.div>
+
+          <div className="absolute -bottom-6 -right-6 hidden lg:block z-30">
+            <Mascot color="coral" pose="peek" className="w-20 h-20" rotate={5} float />
+          </div>
         </motion.div>
       </div>
     </section>

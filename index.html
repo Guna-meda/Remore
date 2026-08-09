@@ -3,62 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Remore - Your Personal Assistant in WhatsApp</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Remore — Your Second Brain, Living in WhatsApp</title>
+    <meta name="description" content="Remore is the calm little companion that remembers, reminds and organizes your life — entirely inside WhatsApp." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-8 -8 116 116'%3E%3Cellipse cx='50' cy='94' rx='22' ry='4' fill='%23000000' opacity='0.1'/%3E%3Cpath d='M50 22 C 47 14, 47 6, 51 2' stroke='%237FBE8C' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3Cpath d='M51 2 C 55 4, 58 9, 55 13 C 51 12, 49 7, 51 2 Z' fill='%237FBE8C'/%3E%3Cpath d='M38 88 L36 96' stroke='%232E6146' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M62 88 L64 96' stroke='%232E6146' stroke-width='6' stroke-linecap='round'/%3E%3Cpath d='M30 62 Q10 46 16 30' stroke='%233B7A57' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M72 66 Q88 72 84 84' stroke='%233B7A57' stroke-width='6' stroke-linecap='round' fill='none'/%3E%3Cpath d='M50 20 C 74 20 82 42 80 62 C 78 84 66 90 50 90 C 34 90 22 84 20 62 C 18 42 26 20 50 20 Z' fill='%233B7A57'/%3E%3Cpath d='M50 20 C 74 20 82 42 80 62 C 79 71 76 78 70 82 C 74 66 72 44 58 30 C 55 26 52 23 50 20 Z' fill='%232E6146' opacity='0.35'/%3E%3Cellipse cx='38' cy='52' rx='8' ry='10' fill='white'/%3E%3Ccircle cx='39' cy='53' r='4' fill='%23241E19'/%3E%3Ccircle cx='41' cy='50' r='1.4' fill='white'/%3E%3Cellipse cx='62' cy='52' rx='8' ry='10' fill='white'/%3E%3Ccircle cx='63' cy='53' r='4' fill='%23241E19'/%3E%3Ccircle cx='65' cy='50' r='1.4' fill='white'/%3E%3Cpath d='M42 66 Q50 72 58 66' stroke='%23241E19' stroke-width='2.5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-              body: ['"Inter"', 'sans-serif'],
-              doodle: ['"Caveat"', 'cursive'],
-            },
-            colors: {
-              primary: '#2563EB',
-              primaryHover: '#1D4ED8',
-              secondary: '#FB923C',
-              slate: {
-                850: '#1e293b', // Custom dark
-              }
-            },
-            animation: {
-              'blob': 'blob 7s infinite',
-            },
-            keyframes: {
-              blob: {
-                '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                '100%': { transform: 'translate(0px, 0px) scale(1)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #F8FAFC;
-        color: #475569;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: #0F172A;
-      }
-      /* Custom scrollbar for chat feel */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
   <script type="importmap">
 {
   "imports": {
@@ -70,7 +20,6 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>

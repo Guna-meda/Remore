@@ -113,11 +113,11 @@ export const SignupModal: React.FC<SignupModalProps> = ({
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          className="relative bg-white w-full max-w-md rounded-3xl p-8 shadow-2xl"
+          className="relative bg-cream-50 w-full max-w-md rounded-[2rem] p-8 shadow-2xl"
         >
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600"
+            className="absolute top-4 right-4 p-2 text-ink/40 hover:text-ink"
           >
             <X size={20} />
           </button>
@@ -133,15 +133,15 @@ export const SignupModal: React.FC<SignupModalProps> = ({
           {/* -------------------------------------------------- */}
           {step === 1 && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <div className="w-12 h-12 bg-blue-50 text-primary rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
                 <Smartphone size={24} />
               </div>
 
-              <h2 className="text-2xl font-bold mb-2">
+              <h2 className="font-display text-2xl font-semibold mb-2 text-ink">
                 Get started with Remore
               </h2>
 
-              <p className="text-slate-500 mb-6">
+              <p className="text-ink/50 mb-6">
                 Enter your WhatsApp number to continue
               </p>
 
@@ -162,11 +162,11 @@ export const SignupModal: React.FC<SignupModalProps> = ({
                   className="flex items-center gap-2 mb-4"
                   countrySelectProps={{
                     className:
-                      "flex items-center gap-1 px-3 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20",
+                      "flex items-center gap-1 px-3 py-3 rounded-xl border border-ink/10 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20",
                   }}
                   numberInputProps={{
                     className:
-                      "w-full px-4 py-3 rounded-xl border border-slate-200 text-base focus:outline-none focus:ring-2 focus:ring-primary/20",
+                      "w-full px-4 py-3 rounded-xl border border-ink/10 text-base focus:outline-none focus:ring-2 focus:ring-primary/20",
                     autoComplete: "tel",
                   }}
                 />
@@ -195,11 +195,11 @@ export const SignupModal: React.FC<SignupModalProps> = ({
               animate={{ opacity: 1 }}
               className="text-center"
             >
-              <h2 className="text-2xl font-bold mb-2">
+              <h2 className="font-display text-2xl font-semibold mb-2 text-ink">
                 Check your WhatsApp
               </h2>
 
-              <p className="text-slate-500 mb-6">
+              <p className="text-ink/50 mb-6">
                 We’ve sent you a message.  
                 Tap <b>Yes</b> to continue with Remore.
               </p>
@@ -220,7 +220,7 @@ export const SignupModal: React.FC<SignupModalProps> = ({
                 alt="WhatsApp QR"
               />
 
-              <p className="mt-4 text-xs text-slate-400">
+              <p className="mt-4 text-xs text-ink/40">
                 After you tap Yes, you can close this window
               </p>
             </motion.div>
@@ -235,15 +235,15 @@ export const SignupModal: React.FC<SignupModalProps> = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 bg-primary/15 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle size={32} />
               </div>
 
-              <h2 className="text-2xl font-bold mb-2">
+              <h2 className="font-display text-2xl font-semibold mb-2 text-ink">
                 You’re all set!
               </h2>
 
-              <p className="text-slate-500 mb-6">
+              <p className="text-ink/50 mb-6">
                 Start chatting with Remore on WhatsApp
               </p>
 
@@ -268,15 +268,15 @@ export const SignupModal: React.FC<SignupModalProps> = ({
       animate={{ opacity: 1 }}
       className="text-center"
     >
-      <div className="w-16 h-16 bg-blue-50 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
+      <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
         <Smartphone size={28} />
       </div>
 
-      <h2 className="text-2xl font-bold mb-2">
+      <h2 className="font-display text-2xl font-semibold mb-2 text-ink">
         You're already on Remore!
       </h2>
 
-      <p className="text-slate-500 mb-6">
+      <p className="text-ink/50 mb-6">
         This number is already registered — just head to WhatsApp to keep chatting.
       </p>
 
